@@ -5,7 +5,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node build/server.js",
+    "engine": "node build/server.js",
+    "start": "pm2 start -f yarn -- engine ",
     "dev": "cross-env NODE_ENV=development && nodemon src/server.ts",
     "postinstall": "tsc"
   },
