@@ -1,4 +1,4 @@
-import { sequelize } from "./../utils/db.utils";
+import { sequelize } from "../utils/db.util";
 import { DataTypes, Model } from "sequelize";
 
 class Meeting extends Model {}
