@@ -10,9 +10,11 @@
   },
   "scripts": {
     "engine": "build/server.js",
-    "start": "pm2 start -f build/server.js",
+    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "start:dev": "pm2 start -f yarn -- engine",
     "dev": "cross-env NODE_ENV=development && nodemon src/server.ts",
-    "postinstall": "tsc"
+    "build" : "tsc",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
