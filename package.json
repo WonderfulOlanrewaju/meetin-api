@@ -1,7 +1,7 @@
 {
   "name": "meetin-api",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "license": "MIT",
   "private": false,
   "scripts": {
