@@ -7,12 +7,21 @@ interface sequelize {
   close : Function
 }
 
-const { DevDB, DBUser, host } = process.env;
+const { 
+    DevDB, DBUser, host,
+    DB_Database, DB_Password, 
+    DB_Host, DB_Username
+ } = process.env;
 
-export const sequelize = new Sequelize(DevDB, DBUser, null, {
-  host,
-  dialect: "mysql",
-});
+export const sequelize = new Sequelize(
+  DB_Database || DevDB,
+  DB_Username || DBUser,
+  DB_Password || null,
+  {
+    host: DB_Host || host,
+    dialect: "mysql",
+  }
+);
 
 export const createConnection = async (sequelize: sequelize) => {
   try {
