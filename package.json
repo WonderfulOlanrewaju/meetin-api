@@ -4,9 +4,13 @@
   "main": "src/server.ts",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node" :"14.7.0",
+    "yarn" : "1.22.4"
+  },
   "scripts": {
-    "engine": "node build/server.js",
-    "start": "pm2 start -f yarn -- engine ",
+    "engine": "build/server.js",
+    "start": "pm2 start -f yarn -- engine",
     "dev": "cross-env NODE_ENV=development && nodemon src/server.ts",
     "postinstall": "tsc"
   },
