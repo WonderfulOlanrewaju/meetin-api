@@ -1,10 +1,10 @@
 import { createConnection, sequelize } from './utils/db.utils';
-import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import SwaggerUI from 'swagger-ui-express';
 import SwaggerDocument from './swagger.json';
-import swaggerJSDoc from "swagger-jsdoc";
+import express from 'express';
+// import swaggerJSDoc from "swagger-jsdoc";
 export const app = express();
 dotenv.config();
 
