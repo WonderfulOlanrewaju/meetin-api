@@ -1,7 +1,18 @@
-import { sequelize } from './../utils/db.utils';
+import { sequelize } from '../utils/db.util';
 import { DataTypes, Model } from "sequelize";
 
-class User extends Model {};
+interface User {
+    firstName : String,
+    lastName : String
+}
+class User extends Model {
+    static getTableInfo  () {
+        return 'This table saves user details'
+    }
+    getFullName () {
+        return [this.firstName , this.lastName].join(' ')
+    }
+};
 
 User.init({
     firstName: {
@@ -17,13 +28,6 @@ User.init({
     password : {
         type: DataTypes.STRING
     },
-    joined : {
-        type :DataTypes.DATE,
-        defaultValue: Date.now
-    },
-    lastSeen : {
-        type :DataTypes.DATE
-    },
     isActive: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
@@ -31,6 +35,11 @@ User.init({
 }, 
 {
     sequelize,
+    timestamps : true,
+    createdAt : "joined",
+    updatedAt : "lastSeen",
+    tableName : 'users',
     modelName : "User"
 })
 
+export {User}

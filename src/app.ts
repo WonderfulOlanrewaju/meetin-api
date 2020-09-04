@@ -1,4 +1,4 @@
-import { createConnection, sequelize } from './utils/db.utils';
+import { createConnection, sequelize } from './utils/db.util';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import SwaggerUI from 'swagger-ui-express';

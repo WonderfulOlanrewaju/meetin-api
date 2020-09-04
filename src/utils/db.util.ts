@@ -4,7 +4,8 @@ dotenv.config();
 
 interface sequelize {
   authenticate : Function,
-  close : Function
+  close : Function,
+  sync : Function
 }
 
 const { 
@@ -29,5 +30,10 @@ export const createConnection = async (sequelize: sequelize) => {
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
-  } 
+  } finally {
+    await sequelize.sync({
+      alter : true
+    })
+    console.log('All tables were successfully updated!')
+  }
 };
