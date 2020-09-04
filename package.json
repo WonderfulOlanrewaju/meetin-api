@@ -10,7 +10,7 @@
   },
   "scripts": {
     "engine": "build/server.js",
-    "start": "pm2 start -f yarn -- engine",
+    "start": "pm2 start -f build/server.js",
     "dev": "cross-env NODE_ENV=development && nodemon src/server.ts",
     "postinstall": "tsc"
   },
