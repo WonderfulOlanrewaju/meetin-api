@@ -3,7 +3,9 @@ import Joi from 'joi';
 const RegistrationSchema = Joi.object({
     firstName: Joi.string()
         .min(2)
-        .max(40)
+        .max(40),
+    email: Joi.string()
+        .email()
         .required(),
     password: Joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),

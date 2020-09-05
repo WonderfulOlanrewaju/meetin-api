@@ -3,7 +3,8 @@ import { DataTypes, Model } from "sequelize";
 
 interface User {
     firstName : String,
-    lastName : String
+    lastName : String,
+    id : Number
 }
 class User extends Model {
     static getTableInfo  () {
@@ -16,11 +17,10 @@ class User extends Model {
 
 User.init({
     firstName: {
-        type :DataTypes.STRING,
-        allowNull : false
+        type :DataTypes.STRING
     },
     lastName: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
     },
     email: {
         type: DataTypes.STRING
