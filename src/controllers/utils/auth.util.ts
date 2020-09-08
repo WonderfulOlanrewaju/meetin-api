@@ -2,6 +2,9 @@ import { handleResError } from './../../utils/err.util';
 import { User } from '../../models/User.model';
 import bcrypt from 'bcryptjs';
 import JWT from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
+const {secretKey} = process.env;
 
 interface userDetails {
     password : string,
@@ -27,7 +30,7 @@ export const createUser = async (userDetails :  userDetails) => {
             let passwordHash = bcrypt.hashSync(userDetails.password, passwordSalt);
             userDetails.password = passwordHash;
             let registeredUser = await User.create(userDetails);
-            user = registeredUser.toJSON();
+            user  = registeredUser.toJSON();
             return {err , user};
         }
     } catch (err) {
@@ -44,7 +47,20 @@ export const loginUser = async (loginDetails : userDetails) => {
             } 
         });
         if (foundExistingUser){
-
+            let correctPW = bcrypt.compareSync(loginDetails.password, foundExistingUser.password);
+            console.log(correctPW)
+            if(!correctPW) return {err : {
+                message: "incorrect password"
+            }} 
+            else {
+                let { id, email, isActive } = foundExistingUser;
+                let options = {
+                    expiresIn: "12h",
+                    issuer: "meetin-hasher"
+                }
+                let token: string = await JWT.sign({ id, email, isActive }, secretKey, options);
+                return { token }
+            }
         } else if (foundExistingUser === null) {
             let err  = { message : "User does not exist. Signup instead!"}
             return {err}
