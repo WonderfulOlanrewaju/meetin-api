@@ -5,8 +5,8 @@
   "license": "MIT",
   "private": false,
   "engines": {
-    "node": "14.7.0",
-    "yarn": "1.22.5"
+    "node": ">=14.7.0",
+    "yarn": ">=1.22.4"
   },
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.js --env production",
