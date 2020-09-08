@@ -4,6 +4,7 @@ import cors from 'cors';
 import SwaggerUI from 'swagger-ui-express';
 import SwaggerDocument from './swagger.json';
 import express from 'express';
+import {router as AuthControllers} from './routes/auth.route';
 // import swaggerJSDoc from "swagger-jsdoc";
 export const app = express();
 dotenv.config();
@@ -24,6 +25,8 @@ app.options("*", cors());
 
 app.get('/', (req, res)=> {
     res.status(200).json({
-        message: "It's time for Meetin API"
+        message: "It's time for Meetin API here"
     });
 });
+
+app.use('/api/v1/auth/', AuthControllers);

@@ -2,8 +2,12 @@ import { sequelize } from '../utils/db.util';
 import { DataTypes, Model } from "sequelize";
 
 interface User {
-    firstName : String,
-    lastName : String
+    firstName : string;
+    isActive: string;
+    lastName : string;
+    password:string;
+    email: string,
+    id : number;
 }
 class User extends Model {
     static getTableInfo  () {
@@ -16,11 +20,10 @@ class User extends Model {
 
 User.init({
     firstName: {
-        type :DataTypes.STRING,
-        allowNull : false
+        type :DataTypes.STRING
     },
     lastName: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
     },
     email: {
         type: DataTypes.STRING
