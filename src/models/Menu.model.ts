@@ -1,9 +1,9 @@
 import { sequelize } from "../utils/db.util";
 import { DataTypes, Model } from "sequelize";
 
-class Meeting extends Model {}
+class Menu extends Model {}
 
-Meeting.init(
+Menu.init(
   {
     startTime: {
       type: DataTypes.DATE,
@@ -28,7 +28,7 @@ Meeting.init(
   },
   {
     sequelize,
-    tableName : "meetings",
-    modelName: "Meeting",
+    tableName : "menus",
+    modelName: "Menu",
   }
 );

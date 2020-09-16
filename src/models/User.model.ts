@@ -2,38 +2,64 @@ import { sequelize } from '../utils/db.util';
 import { DataTypes, Model } from "sequelize";
 
 interface User {
-    firstName : string;
+    fullName : string;
     isActive: string;
     lastName : string;
     password:string;
     email: string,
+    phone: string;
     id : number;
+    isAdmin: Boolean,
+    [propName: string] : any
 }
 class User extends Model {
     static getTableInfo  () {
         return 'This table saves user details'
     }
-    getFullName () {
-        return [this.firstName , this.lastName].join(' ')
-    }
 };
 
 User.init({
-    firstName: {
+    fullName: {
         type :DataTypes.STRING
     },
-    lastName: {
+    country: {
         type: DataTypes.STRING
     },
     email: {
+        type: DataTypes.STRING,
+        unique : true,
+        allowNull: false
+    },
+    phone : {
         type: DataTypes.STRING
     },
     password : {
         type: DataTypes.STRING
     },
-    isActive: {
+    isActivated: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    isApproved : {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    userType: {
+        type: DataTypes.ENUM({ values : [
+            'super', 
+            'administrator',
+            'moderator', 
+            'cashier',
+            'normal',
+            'enterprise',
+            'brand',
+            'staff'
+        ]}),
+        defaultValue :'normal'
     }
 }, 
 {
@@ -46,3 +72,4 @@ User.init({
 })
 
 export {User}
+

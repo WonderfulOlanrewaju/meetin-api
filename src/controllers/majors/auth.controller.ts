@@ -41,7 +41,7 @@ export const RegisterUserController =  async (req : req , res : res) => {
             let { err, user } = await createUser(value) as userCreated;
             if (err) handleResError(res, err, 400)
             else {
-                console.log(user);
+                // console.log(user);
                 let { id, email, isActive }: userInterface = user;
                 let options = {
                     expiresIn: "12h",
@@ -50,8 +50,8 @@ export const RegisterUserController =  async (req : req , res : res) => {
                 let token = await JWT.sign({ id, email, isActive }, secretKey, options);
                 handleResSuccess(
                     res,
-                    `Account successfully registered`,
-                    {token},
+                    `Account currently under review. Email notification on approval`,
+                    undefined,
                     201
                 )
             }

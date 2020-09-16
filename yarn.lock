@@ -2439,6 +2439,11 @@ https-proxy-agent@^3.0.0:
     agent-base "^4.3.0"
     debug "^3.1.0"
 
+i18n-iso-countries@3.7.5:
+  version "3.7.5"
+  resolved "https://registry.yarnpkg.com/i18n-iso-countries/-/i18n-iso-countries-3.7.5.tgz#4c55826c654cf6d3b156774cbec88718714faaf4"
+  integrity sha512-drjT4lwvK8p+qqEBrsKYzwtBJvdjwcnQIdNEHhlwit5PSk/34z5A0CR974KUQLoGG3YWRx4EW8Z7MC+O/mQNzQ==
+
 iconv-lite@0.4.24, iconv-lite@^0.4.4:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -2690,6 +2695,13 @@ iterate-value@^1.0.0:
   dependencies:
     es-get-iterator "^1.0.2"
     iterate-iterator "^1.0.1"
+
+joi-country-extension@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/joi-country-extension/-/joi-country-extension-1.2.0.tgz#cf18737217ff44c04ae62080488bae128136976b"
+  integrity sha512-F7++4WgccvPsvhizB1shbSueIphh1Gbe4yfA0x4PZnZ7dLPfmYlX8BjJUqThiWLEijUtnqVv5XGUmju55RL3Aw==
+  dependencies:
+    i18n-iso-countries "3.7.5"
 
 joi@^17.2.0:
   version "17.2.0"

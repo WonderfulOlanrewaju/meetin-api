@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "meetin-api",
+      name: "godark-api",
       script: "./build/server.js",
       watch:  true,
       env: {

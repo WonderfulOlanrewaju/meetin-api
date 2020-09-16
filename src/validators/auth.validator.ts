@@ -1,16 +1,19 @@
 import Joi from 'joi';
 
 const RegistrationSchema = Joi.object({
-    firstName: Joi.string()
+    fullName: Joi
+        .string()
         .min(2)
         .max(40),
-    email: Joi.string()
+    email: Joi
+        .string()
         .email()
         .required(),
-    password: Joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+    phone: Joi.string()
         .required(),
-    confirmPassword: Joi.ref('password')
+    country: Joi
+        .string()
+        .required()
 })
 
 const LoginSchema = Joi.object({

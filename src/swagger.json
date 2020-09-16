@@ -1,3 +1,144 @@
 {
-
+    "openapi": "3.0.0",
+    "info": {
+        "version": "v1",
+        "title": "Godark API Documentation",
+        "description": "Changing the way you eat"
+    },
+    "host": "localhost:9092",
+    "basePath": "/",
+    "tags": [{
+        "name": "Godark API Collection",
+        "description": "a group of API services related to connecting lives"
+    }],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "definitions" : {
+        "User" : {
+            "type" : "object",
+            "properties": {
+                "fullName": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "isActive": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "UserSignup": {
+            "type" : "object",
+            "properties": {
+                "fullName": {"type" : "string"},
+                "country": {"type" : "string"},
+                "email": {"type" : "string"},
+                "phone": {"type" : "string"}
+            }
+        },
+        "UserLogin" : {
+            "type": "object",
+            "properties" : {
+                "email" : {
+                    "type" : "string"
+                },
+                "password": { 
+                    "type" : "string"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Home route"
+                ],
+                "summary": "Get Home route of API",
+                "description":"Login",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login user",
+                "description": "Login to App and get Auth Token",
+                "requestBody" : {
+                    "description": "User Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/UserLogin"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User logged in",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "schema" : {
+                    "$ref": "#/definitions/User"
+                }
+            }
+        },
+        "/api/v1/auth/register": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register user",
+                "description": "Register user pending admin approval",
+                "requestBody" : {
+                    "description": "User Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/UserSignup"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User logged in",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "schema" : {
+                    "$ref": "#/definitions/User"
+                }
+            }
+        }
+    },
+    "schemas": ["#/definitions/UserLogin", "#/definitions/User"]
 }

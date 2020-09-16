@@ -1,5 +1,5 @@
 import { handleResError } from './../../utils/err.util';
-import { User } from '../../models/User.model';
+import{ User}  from '../../models/User.model';
 import bcrypt from 'bcryptjs';
 import JWT from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -26,9 +26,6 @@ export const createUser = async (userDetails :  userDetails) => {
                 }
             return {err, user}
         } else {
-            let passwordSalt = bcrypt.genSaltSync(10);
-            let passwordHash = bcrypt.hashSync(userDetails.password, passwordSalt);
-            userDetails.password = passwordHash;
             let registeredUser = await User.create(userDetails);
             user  = registeredUser.toJSON();
             return {err , user};
